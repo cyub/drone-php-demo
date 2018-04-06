@@ -1,0 +1,6 @@
+pipeline:
+  build:
+    image: yubing:phpci
+    commands:
+      - echo "start php ci"
+      - phploc ./src
