@@ -1,6 +1,6 @@
 pipeline:
-  build:
-    image: yubing/phpci:0.1
+  test:
+    image: yubing/phpci:0.2
     commands:
       - phpcpd ./src
       - phpmd ./src
