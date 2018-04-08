@@ -2,7 +2,7 @@ pipeline:
   test:
     image: yubing/phpci:0.2
     commands:
-      - phpmd ./src text codesize,unusedcode,naming
+      # - phpmd ./src text codesize,unusedcode,naming
       - phpcpd ./src
       - phploc ./src
       # - phpcs --standard=PSR2 ./src
