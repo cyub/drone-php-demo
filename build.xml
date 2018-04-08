@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="drone-php-demo" default="build" basedir=".">
+    <target name="build" depends="lint,phploc,phpmd,phpcpd,phpcs" />
+    <target name="lint" description="lint source code">
+        <phplint haltonfailure="true">
+            <fileset dir="${project.basedir}/src">
+                <include name="**/*.php" />
+            </fileset>
+        </phplint>
+    </target>
+    <target name="phploc" description="Measures the size of the project using PHPLOC">
+        <exec executable="phploc" logoutput="true">
+            <arg path="${project.basedir}/src" />
+        </exec>
+    </target>
+    <target name="phpmd" description="Perform project mess detection using PHPMD">
+        <exec executable="phpmd" logoutput="true">
+            <arg path="${project.basedir}/src" />
+            <arg value="text" />
+            <arg value="cleancode,codesize,controversial,design,naming,unusedcode" />
+        </exec>
+    </target>
+    <target name="phpcpd" description="Find duplicate code using PHPCPD">
+        <exec executable="phpcpd" logoutput="true">
+            <arg path="${project.basedir}/src" />
+        </exec>
+    </target>
+    <target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer">
+        <exec executable="phpcs" logoutput="true">
+            <arg value="--standard=PSR2" />
+            <arg path="${project.basedir}/src" />
+        </exec>
+    </target>
+</project>
