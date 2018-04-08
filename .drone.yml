@@ -2,5 +2,7 @@ pipeline:
   build:
     image: yubing/phpci:0.1
     commands:
-      - echo "start php ci"
+      - phpcpd ./src
+      - phpmd ./src
       - phploc ./src
+      - phpcs --standard=PSR2 ./src
